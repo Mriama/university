@@ -2,7 +2,9 @@ package sn.afi.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class ConnexionDb {
 
@@ -27,8 +29,27 @@ public class ConnexionDb {
 		}
 		return cnx;
 	}
+	
 	public static void main(String[] args) 
 	{
 		ConnexionDb.getCnx("university");
+	}
+	
+	public static void post(String db) throws Exception {
+		final  String var1 = "2109M";
+		final  String var2 = "mariama";
+		final  String var3 = "diallo";
+		try {
+			Connection con = getCnx(db);
+			PreparedStatement posted = con.prepareStatement("INSERT INTO Etudiant(matricule,prenom,nom,dateNiassance) VALUES ('"+var1+"','"+var2+"','"+var3+"')");
+			System.out.println("pas inseré");
+			posted.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println("insertion reussi"+ e.getMessage());
+		}
+		finally {
+			System.out.println("insertion reussi");
+		}
 	}
 }

@@ -4,6 +4,23 @@ import java.util.Date;
 import java.util.List;
 
 public class Etudiant extends User{
+	
+	
+	public Etudiant(String code, String prenom, String nom, Date dateNaissance) {
+		super(code, prenom, nom);
+		this.dateNaissance = dateNaissance;
+	}
+	public Etudiant(String code, String prenom, String nom) {
+		super(code, prenom, nom);
+	}
+	public Etudiant(String code) {
+		super(code);
+		// TODO Auto-generated constructor stub
+	}
+	public Etudiant() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	private Date dateNaissance;
 	//private Inscription [] inscriptions;
 	private List <Inscription> inscriptions;
